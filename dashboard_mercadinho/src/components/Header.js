@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import StyleSheet from 'react'
 const Header = () => {
   return (
     <header>
@@ -9,3 +9,4 @@ const Header = () => {
 };
 
 export default Header;
+

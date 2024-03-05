@@ -3,7 +3,9 @@ import './App.css';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 
-import Router from './Rotas/Router';
+
+import {Outlet} from "react-router-dom"
+
 function App() {
   return (
     <div>
@@ -11,7 +13,7 @@ function App() {
     <Sidebar />
     
     <main>
-      <Router/>
+      <Outlet/>
     </main>
   </div>
   );
