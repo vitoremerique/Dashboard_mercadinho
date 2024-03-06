@@ -12,8 +12,8 @@ const data = [
 ];
 const Dashboard = () => {
   return (
-
-    <div>   Dashboard
+  <div style={styles.container}>  
+      <div style={styles.texto}>Dashboard</div>
     <LineChart width={600} height={300} data={data}>
     <CartesianGrid strokeDasharray="3 3" />
     <XAxis dataKey="name" />
@@ -34,9 +34,14 @@ export default Dashboard;
 const styles = {
   container:{
     
-    backgroundColor: '#d9d9d2a2',
+    backgroundColor: "white",
     
     width: '100%',
     height: '100vh'
+  },
+  texto:{
+    textAlign: 'center',
+    borderBottom: '1px solid black',
+    marginBottom: '15px'
   }
 }
