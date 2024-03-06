@@ -8,16 +8,22 @@ import {Outlet} from "react-router-dom"
 
 function App() {
   return (
-    <div style={styles.container}>
+    <div style={styles.body}>
+    <div style={styles.mainLayout}>
+    <div style={styles.header}>
+    <Header  />
+      </div>  
+
+    <div style={styles.contentWrapper}>
+      <div style={styles.sidebar}>
+      <Sidebar />
       
-    <Header />
-    
-    <Sidebar />
-    
-    <main>
+    </div>
+    <main style={styles.content}>
       <Outlet />
     </main>
-   
+   </div>
+   </div>
    </div>
   );
 }
@@ -25,26 +31,46 @@ function App() {
 export default App;
 
 const styles = {
-  container:{
-    flex: 1,
-    padding: '0px',
-    margin: '0px',
-    fontSize: '18px',
-    height: '1280',
-    width: '720',
-   
-    
+  // Estilos gerais
+  body: {
+    fontFamily: 'Arial, sans-serif',
+    margin: 0,
+    padding: 0,
   },
 
-  sidebar:{
-    
-   
-    
-    
+  // Layout principal
+  mainLayout: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100vh',
+  },
 
-  }
-  
+  contentWrapper: {
+    display: 'flex',
+    flex: 1,
+  },
 
- 
-  
-}
+  content: {
+    flex: 1,
+    padding: '20px',
+  },
+
+  // Header
+  header: {
+    backgroundColor: '#333',
+    color: '#fff',
+    padding: '10px',
+  },
+
+  // Sidebar
+  sidebar: {
+    width: '150px',
+    backgroundColor: '#f4f4f4',
+    padding: '20px',
+     
+  },
+
+  // Estilos específicos dos componentes podem ser adicionados aqui
+};
+
+

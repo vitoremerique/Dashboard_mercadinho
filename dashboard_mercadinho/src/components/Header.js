@@ -1,10 +1,19 @@
 import * as React from 'react';
-
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 const Header = () => {
   return (
-    <header style={styles.container} >
-      <div style={styles.titlem_mid}>Dashboard mercadinho</div>
-    </header>
+    <AppBar position="static">
+    <Toolbar>
+      <DashboardIcon />
+      <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginLeft: '10px', }}>
+        UFOPA mini box
+      </Typography>
+      {/* Outros componentes de cabeçalho, como botões de navegação ou de usuário */}
+    </Toolbar>
+  </AppBar>
   );
 };
 
@@ -13,7 +22,7 @@ export default Header;
 
 const styles = {
   container:{
-    flex:1,
+   
     backgroundColor: '#d9d9d2a2',
     padding: '10px',
     width: '100%',
@@ -23,7 +32,7 @@ const styles = {
     
   },
   titlem_mid:{
-    flex:1,
+   
     textAlign: 'center'
 
   }
