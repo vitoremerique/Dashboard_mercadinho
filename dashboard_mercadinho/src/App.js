@@ -8,15 +8,43 @@ import {Outlet} from "react-router-dom"
 
 function App() {
   return (
-    <div>
-    <Header/>
+    <div style={styles.container}>
+      
+    <Header />
+    
     <Sidebar />
     
     <main>
-      <Outlet/>
+      <Outlet />
     </main>
-  </div>
+   
+   </div>
   );
 }
 
 export default App;
+
+const styles = {
+  container:{
+    flex: 1,
+    padding: '0px',
+    margin: '0px',
+    fontSize: '18px',
+    height: '1280',
+    width: '720',
+   
+    
+  },
+
+  sidebar:{
+    
+   
+    
+    
+
+  }
+  
+
+ 
+  
+}
