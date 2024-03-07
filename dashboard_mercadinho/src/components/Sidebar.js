@@ -11,7 +11,7 @@ const Sidebar = () => {
 
         
         <Link to="/" style={styles.Link}><Button variant="contained" startIcon={<PieChartIcon/>}
-        sx={{bgcolor: '#CCCCCC', color: 'black', borderRadius: '5px', width: '140px', height: '40px',borderRadius: '20px 20px 20px 20px', justifyContent:'start' }}>Dashboard</Button>
+        sx={{bgcolor: '#CCCCCC', color: 'black', borderRadius: '5px', width: '140px', height: '40px',borderRadius: '20px 20px 20px 20px', justifyContent:'start' }}>Início</Button>
          
         </Link>
 

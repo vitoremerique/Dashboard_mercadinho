@@ -1,47 +1,76 @@
-import * as React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import { Alert } from '@mui/material';
 
-const data = [
-  { name: 'Janeiro', uv: 4000, pv: 2400, amt: 2400 },
-  { name: 'Fevereiro', uv: 3000, pv: 1398, amt: 2210 },
-  { name: 'Março', uv: 2000, pv: 9800, amt: 2290 },
-  { name: 'Abril', uv: 2780, pv: 3908, amt: 2000 },
-  { name: 'Maio', uv: 1890, pv: 4800, amt: 2181 },
-  { name: 'Junho', uv: 2390, pv: 3800, amt: 2500 },
-  { name: 'Julho', uv: 3490, pv: 4300, amt: 2100 },
+
+const produtos = [
+  { id: 1, nome: 'Arroz', estoque: 10 },
+  { id: 2, nome: 'Feijão', estoque: 5 },
+  { id: 3, nome: 'Açúcar', estoque: 2 },
+  { id: 4, nome: 'Óleo', estoque: 2 },
+  
 ];
-const Dashboard = () => {
+
+function Dashboard() {
+  // Função para filtrar produtos com estoque baixo
+  const produtosBaixoEstoque = produtos.filter(produto => produto.estoque <= 5);
+
   return (
-  <div style={styles.container}>  
-      <div style={styles.texto}>Dashboard</div>
-    <LineChart width={600} height={300} data={data}>
-    <CartesianGrid strokeDasharray="3 3" />
-    <XAxis dataKey="name" />
-    <YAxis />
-    <Tooltip />
-    <Legend />
-    <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-    <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-  </LineChart>
-  </div>
+    <Grid container spacing={2}>
+      <Grid item xs={12} sm={6} md={3}>
+        <Card>
+          <CardContent>
+            <Typography variant="h6" component="div">
+              Vendas do Dia
+            </Typography>
+            <Typography variant="h4" component="div">
+              R$ 1000
+            </Typography>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={12} sm={6} md={3}>
+        <Card>
+          <CardContent>
+            <Typography variant="h6" component="div">
+              Produtos em Estoque
+            </Typography>
+            <Typography variant="h4" component="div">
+              {produtos.length}
+            </Typography>
+          </CardContent>
+        </Card>
+      </Grid>
+      
+      <Grid item xs={12} sm={6} md={3}>
+        <Card>
+          <CardContent>
+            <Typography variant="h6" component="div">
+              Faturamento Mensal
+            </Typography>
+            <Typography variant="h4" component="div">
+              R$ 30,000
+            </Typography>
+          </CardContent>
+        </Card>
+      </Grid>
+      {produtosBaixoEstoque.length > 0 && (
+        <Grid item xs={12}>
+          <Alert severity="warning">
+            <Typography variant="h6">Alerta de Estoque Baixo</Typography>
+            <ul>
+              {produtosBaixoEstoque.map(produto => (
+                <li key={produto.id}>{produto.nome}</li>
+              ))}
+            </ul>
+          </Alert>
+        </Grid>
+      )}
+    </Grid>
   );
-};
+}
 
 export default Dashboard;
-
-
-
-const styles = {
-  container:{
-    
-    backgroundColor: "white",
-    
-    width: '100%',
-    height: '100vh'
-  },
-  texto:{
-    textAlign: 'center',
-    borderBottom: '1px solid black',
-    marginBottom: '15px'
-  }
-}
