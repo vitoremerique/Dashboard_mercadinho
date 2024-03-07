@@ -3,8 +3,10 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
-function Registerproduct() {
+function Product() {
   const [product, setProduct] = useState({
     name: '',
     price: '',
@@ -25,9 +27,9 @@ function Registerproduct() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Adicionando o novo produto à lista de produtos recentes
-    const newProduct = { ...product, id: recentProducts.length + 1 };
-    setRecentProducts([newProduct, ...recentProducts.slice(0, 2)]);
+    // Simulação de adicionar o produto aos produtos recentes
+    const updatedProducts = [product, ...recentProducts.slice(0, 2)];
+    setRecentProducts(updatedProducts);
     // Reinicialize os campos do formulário
     setProduct({
       name: '',
@@ -38,12 +40,12 @@ function Registerproduct() {
   };
 
   return (
-    <>
+    <div>
       <form onSubmit={handleSubmit}>
         <Typography variant="h5" gutterBottom>
           Cadastro de Produto
         </Typography>
-        <Grid container spacing={5}>
+        <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <TextField
               required
@@ -88,6 +90,7 @@ function Registerproduct() {
               value={product.category}
               onChange={handleChange}
             />
+            
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -99,28 +102,31 @@ function Registerproduct() {
               onChange={handleChange}
             />
           </Grid>
-          
         </Grid>
         <Button type="submit" variant="contained" color="primary" style={{marginTop:'15px'}}>
           Cadastrar Produto
         </Button>
       </form>
-
-      <Typography variant="h5" gutterBottom style={{ marginTop: '20px' }}>
+      <Typography variant="h5" gutterBottom>
         Últimos Produtos Cadastrados
       </Typography>
-      <ul>
-        {recentProducts.map((recentProduct) => (
-          <li key={recentProduct.id}>
-            <Typography variant="body1">
-              <strong>{recentProduct.name}</strong> - R${' '}
-              {Number(recentProduct.price).toFixed(2)} ({recentProduct.quantity} unidades)
-            </Typography>
-          </li>
+      <Grid container spacing={2}>
+        {recentProducts.map((recentProduct, index) => (
+          <Grid key={index} item xs={12} sm={6} md={4}>
+            <Card>
+              <CardContent>
+                <Typography variant="h6">{recentProduct.name}</Typography>
+                <Typography>Preço: R${recentProduct.price}</Typography>
+                <Typography>Quantidade: {recentProduct.quantity}</Typography>
+                <Typography>Categoria: {recentProduct.category}</Typography>
+                <Typography>Gtin: {recentProduct.Gtin}</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         ))}
-      </ul>
-    </>
+      </Grid>
+    </div>
   );
 }
 
-export default Registerproduct;
+export default Product;
